@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 #DEBUG = True
-#ALLOWED_HOSTS = ["https://pi-engcomp-gma.herokuapp.com/", "127.0.0.1"]
+ALLOWED_HOSTS = ["https://projetointegrador-2.herokuapp.com/", "127.0.0.1"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
