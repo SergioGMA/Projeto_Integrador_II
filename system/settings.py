@@ -24,11 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'h5m#558!xwktz)4swc0(@y04%ij8o!38$khguysta43-p1x-5k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-#ALLOWED_HOSTS = ['*']
-
 DEBUG = False
-ALLOWED_HOSTS = ["https://projetointegrador-2.herokuapp.com"]
+#DEBUG = True
+ALLOWED_HOSTS = ['*']
+
+#DEBUG = False
+#ALLOWED_HOSTS = ["https://projetointegrador-2.herokuapp.com/", "127.0.0.1"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
