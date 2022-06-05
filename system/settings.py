@@ -28,7 +28,7 @@ SECRET_KEY = 'h5m#558!xwktz)4swc0(@y04%ij8o!38$khguysta43-p1x-5k'
 #ALLOWED_HOSTS = ['*']
 
 DEBUG = False
-ALLOWED_HOSTS = ["https://projetointegrador-2.herokuapp.com/api"]
+ALLOWED_HOSTS = ["https://projetointegrador-2.herokuapp.com"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = False
