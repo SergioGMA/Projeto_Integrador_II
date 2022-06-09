@@ -14,8 +14,6 @@ from rest_framework import generics
 from django.http.response import JsonResponse
 import json
 
-from django.contrib.auth import authenticate
-
 
 class LoginView(APIView, View):
     authentication_classes = []
@@ -30,8 +28,8 @@ class LoginView(APIView, View):
 
         if user is not None:
             token = Token.objects.get_or_create(user=user[0])
-
             user = User.objects.filter(id=token[0].user_id).values()[0]
+
             res = {
                 "status": True,
                 "token": token[0].key,
@@ -43,7 +41,6 @@ class LoginView(APIView, View):
             return Response(res)
         
         return Response({"teste": False})
-
 
 
 class VacinaViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -60,8 +57,8 @@ class VacinaViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 class ProfileViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    authentication_classes = [SessionAuthentication, TokenAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    #authentication_classes = [SessionAuthentication, TokenAuthentication, BasicAuthentication]
+    #permission_classes = [IsAuthenticated]
     queryset = Profile.objects.none()
     serializer_class = ProfileSerializer
 
@@ -70,7 +67,12 @@ class ProfileViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         prof = Profile.objects.all().filter(cpf=request.data['cpf'])
 
         if len(user) == 0 and len(prof) == 0:
-            u = User.objects.create( username=request.data['username'], password=request.data['password'], )
+            u = User.objects.create_user(
+                username=request.data['username'],
+                password=request.data['password'],
+                is_staff=True,
+            )
+
             u.profile.cpf = request.data['cpf']
             u.profile.first_name = request.data['first_name']
             u.profile.last_name = request.data['last_name']
@@ -87,8 +89,8 @@ class ProfileViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 class BannerViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    authentication_classes = [SessionAuthentication, TokenAuthentication, BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    #authentication_classes = [SessionAuthentication, TokenAuthentication, BasicAuthentication]
+    #permission_classes = [IsAuthenticated]
     queryset = Banner.objects.none()
     serializer_class = BannerSerializer
 

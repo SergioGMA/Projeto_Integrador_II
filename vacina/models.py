@@ -28,8 +28,9 @@ class Vacina(models.Model):
     data_validade = models.DateTimeField(
         verbose_name='Data Validade', max_length=100, default=datetime.now)
         
-    # def __str__(self):
-    #     return self.user
+    def __str__(self):
+        return str(self.user)
+        
 
 
 class Profile(models.Model):
@@ -52,9 +53,10 @@ class Profile(models.Model):
         verbose_name='Apresenta algum tipo de alergia?', max_length=10, default="Não")
     cpf = models.CharField(verbose_name='CPF', max_length=14, unique=True, null=True)
 
-    # def __str__(self):
-    #     return self.user
-        #return self.first_name + self.last_name
+    def __str__(self):
+        return str(self.user)
+        #return self.user.get_username()
+        #return str(self.first_name + self.last_name)
     
 
 # @receiver(post_save, sender=User)
@@ -84,5 +86,5 @@ class Banner(models.Model):
     banner = models.TextField(verbose_name='Banner', max_length=1000,
                               default="EM BREVE SERÁ DIVULGADO UMA NOVA CAMPANHA DE VACINAÇÃO")
 
-    # def __str__(self):
-    #     return self.banner
+    def __str__(self):
+        return str(self.banner)
