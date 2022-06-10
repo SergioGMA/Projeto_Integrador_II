@@ -18,6 +18,7 @@ class VacinaSerializer(serializers.ModelSerializer):
             'unidade',
             'data_fabricacao',
             'data_validade',
+            'data_aplicacao',
             ]
 
 
