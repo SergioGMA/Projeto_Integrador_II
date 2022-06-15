@@ -7,6 +7,7 @@ from django.test import Client
 
 
 class TestProfileModel(TestCase):
+
     @classmethod
     def setUpTestData(self):
         self.username = 'Juliana'
@@ -30,22 +31,5 @@ class loginViewTesteCase(TestCase):
         self.assertEquals(response.status_code, 405)
 
     def test_unauthorized_status_code_401(self):
-        API_LOGIN_URL = '/login/'
-        response= self.client.get(API_LOGIN_URL)
-        self.assertEquals(response.status_code, 200)
-
-#     def test_status_code_200(self):
-#         response = self.client.get("Banner")
-#         self.assertEquals(response.status_code, 200)
-
-#     def test_unauthorized_status_code_401(self):
-#         url = reverse("login")
-#         response = self.client.get(reverse("login"))
-#         self.assertEquals(response.status_code, 401)
-
-
-# class testUrls(SimpleTestCase):
-
-#     def test_list_url_is_resolved(self):
-#         url = reverse("Banner")
-#         self.assertEquals(resolve(url).func.view_class, BannerViewSet)
+        resolver = resolve('/login/')
+        self.assertEqual(resolver.view_name, 'login')

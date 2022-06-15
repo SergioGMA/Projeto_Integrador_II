@@ -39,28 +39,5 @@ class ProfileViewSetTestCase(APITestCase):
                 "password": "12345"
         }
         response = self.client.post("/api/profile/", data)
-        print(response)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-
-# class ProfileViewSetTestCase(APITestCase):
-
-#     list_url = reverse("api")
-#     @classmethod
-#     def setUp(self):
-#         self.user = User.objects.create_user(username='testename', password= "teste123456")
-#         self.token = Token.objects.create(user=self.user)
-#         self.api_authentication()
-
-#     def api_authentication(self):
-#         self.client.credentials(HTTP_AUTHORIZATION="Token" + self.token.key)
-
-#     def test_profile_list_authentication(self):
-#         response = self.client.get(self.list_url)
-#         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-#     def test_profile_list_authentication(self):
-#         self.client.force_authenticate(user=None)
-#         response = self.client.get(self.list_url)
-#         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
+        #print(response)
+        self.assertEquals(response.status_code, 200)
